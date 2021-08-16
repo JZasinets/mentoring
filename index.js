@@ -3,7 +3,6 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-
 readline.question(`Введите Ваше имя: `, function(name) {
     console.log(`Привет, ${name.toUpperCase()}`);
     readline.close();
