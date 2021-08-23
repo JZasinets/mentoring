@@ -1,4 +1,4 @@
-export default class App {
+class App {
   constructor() {
     this.commands = [];
   }
@@ -30,3 +30,5 @@ export default class App {
     this.listenToCommand();
   };
 }
+
+module.exports = App
