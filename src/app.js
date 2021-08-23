@@ -1,3 +1,7 @@
+const User = require('./greeting.js');
+const LogOut = require('./logOut.js');
+const readline = require('./readline');
+
 class App {
   constructor() {
     this.commands = [];
@@ -14,21 +18,16 @@ class App {
   };
 
   listenToCommand = () => {
-    readline.question(`Введите команду: `, (commandName) => {
-        const handler = this.commands.find((item) => item.name === commandName);
-        handler.callback();
-        if(!handler) {
-                return console.log('Такой команды нет, попробуйте ещё раз')
-        }
-    });
+    readline.question();
   };
 
   start = () => {
-    this.registerCommand("приветственнаяКоманда1", User.greeting);
-    this.registerCommand("приветственнаяКоманда2", User.greeting);
+    this.registerCommand("приветственнаяКоманда", User.greeting);
+    this.registerCommand("командаОтключения", LogOut.output);
+    console.log(this.showCommands(this.commands));
 
     this.listenToCommand();
   };
 }
 
-module.exports = App
+module.exports = App;

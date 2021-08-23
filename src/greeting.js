@@ -40,5 +40,4 @@ readline.question(`Введите Ваше имя: `, (name) => {
     readline.close();
 });
 
-
 module.exports = User;
