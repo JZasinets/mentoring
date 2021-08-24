@@ -1,7 +1,4 @@
-const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const readline = require('./readline');
 
 class User {
     constructor (gender) {
@@ -35,9 +32,10 @@ class User {
 
 let user = new User();
 
-readline.question(`Введите Ваше имя: `, (name) => {
-    user.greeting(name);
-    readline.close();
-});
+const commandWelcome = () => {
+    return readline.question(`Введите Ваше имя: `, (name) => {
+        user.greeting(name);
+    });
+}
 
-module.exports = User;
+module.exports = commandWelcome;

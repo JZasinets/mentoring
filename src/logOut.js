@@ -1,7 +1,5 @@
-class LogOut {
-    output = () => {
-        return console.log('Увидимся!');
-    }
+const logOut = () => {
+    return console.log('Увидимся!');
 }
 
-module.exports = LogOut;
+module.exports = logOut;

@@ -3,9 +3,4 @@ const readline = require('readline').createInterface({
       output: process.stdout
   });
 
-readline.question(`Введите команду: `, (commandName) => {
-    const handler = this.commands.find((item) => item.name === commandName);
-    handler.callback();
-});
-
-module.exports = readline();
+module.exports = readline;

@@ -1,5 +1,5 @@
-const User = require('./greeting.js');
-const LogOut = require('./logOut.js');
+const commandWelcome = require('./greeting.js');
+const logOut = require('./logOut.js');
 const readline = require('./readline');
 
 class App {
@@ -7,26 +7,30 @@ class App {
     this.commands = [];
   }
 
-  registerCommand = (name, callback) => {
-    this.commands = [...this.commands, { name, callback }];
+  registerCommand = (commandName, callback) => {
+    this.commands = [...this.commands, { commandName, callback }];
   };
 
   showCommands = () => {
     return `Привет, я чат-бот! Список моих команд: ${this.commands
-      .map((item) => item.name)
+      .map((item) => item.commandName)
       .join(", ")}`;
   };
 
-  listenToCommand = () => {
-    readline.question();
+  listenToCommand = (commands) => {
+    readline.question(`Введите команду: `, (inputCommandName) => {
+      const handler = this.commands.find((item) => item.commandName === inputCommandName);
+      if(!handler) return console.log('Такой команды нет, попробуйте еще раз');
+      handler.callback();
+    });
   };
 
   start = () => {
-    this.registerCommand("приветственнаяКоманда", User.greeting);
-    this.registerCommand("командаОтключения", LogOut.output);
+    this.registerCommand("приветствие", commandWelcome);
+    this.registerCommand("выход", logOut);
     console.log(this.showCommands(this.commands));
 
-    this.listenToCommand();
+    this.listenToCommand(this.commands);
   };
 }
 
