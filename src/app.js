@@ -17,11 +17,16 @@ class App {
       .join(", ")}`;
   };
 
-  listenToCommand = (commands) => {
+  listenToCommand = () => {
     readline.question(`Введите команду: `, (inputCommandName) => {
       const handler = this.commands.find((item) => item.commandName === inputCommandName);
-      if(!handler) return console.log('Такой команды нет, попробуйте еще раз');
-      handler.callback();
+      if(!handler) {
+        console.log('Такой команды нет, попробуйте еще раз')
+        return this.listenToCommand();
+      } else {
+        handler.callback();
+        this.listenToCommand();
+      }
     });
   };
 

@@ -35,6 +35,7 @@ let user = new User();
 const commandWelcome = () => {
     return readline.question(`Введите Ваше имя: `, (name) => {
         user.greeting(name);
+        readline.close()
     });
 }
 

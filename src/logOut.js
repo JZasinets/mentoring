@@ -1,5 +1,6 @@
 const logOut = () => {
-    return console.log('Увидимся!');
+    console.log('Увидимся!');
+    return process.exit();
 }
 
 module.exports = logOut;
