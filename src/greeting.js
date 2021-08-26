@@ -1,5 +1,6 @@
 const readline = require('./readline');
 
+
 class User {
     constructor (gender) {
         this.gender = gender;
@@ -12,37 +13,38 @@ class User {
         const isWomanName = /[aeiouаоиеёэыуюя]/g.test(name.slice(-1));
         this.gender = isWomanName ? "woman" : "man";
 
-        if (isNameContainsSpaces) this.name = name.split(' ').join('');
         if (!name) {
             console.log('Имя не может быть пустым');
-            return commandWelcome();
+            return commandWelcome(onReturnCommand);
         }
         this.name = name;
+        if (isNameContainsSpaces) this.name = name.split(' ').join('');
 
         const isNameSmall = this.name.length < 3;
         const isNameContainsNumbers = /\d/.test(this.name);
         const isNameContainsSymbols = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(this.name);
         const showUserName = this.name[0].toUpperCase() + this.name.slice(1).toLowerCase();
 
-        if (isNameSmall) {
-            console.log('Имя должно содержать более 3-х букв');
-            return commandWelcome();
+        const handlerError = (error, text) => {
+            if (error) {
+                console.log(text);
+                return commandWelcome(onReturnCommand);
+            }
         }
-        if (isNameContainsNumbers) {
-            console.log('Имя не может содержать цифры');
-            return commandWelcome();
-        }
-        if (isNameContainsSymbols) {
-            console.log('Имя не может содержать символы');
-            return commandWelcome();
-        }
-        console.log(`Ваш пол ${this.gender}`)
-        if (isWomanName) {
-            console.log(`Привет, ${showUserName}! Ты такая красивая сегодня!`);
+
+        if (isNameSmall || isNameContainsNumbers || isNameContainsSymbols) {
+            handlerError(isNameSmall, 'Имя должно содержать более 3-х букв');
+            handlerError(isNameContainsNumbers, 'Имя не может содержать цифры');
+            handlerError(isNameContainsSymbols, 'Имя не может содержать символы');
         } else {
-            console.log(`Привет, ${showUserName}! Ты такой красивый сегодня!`);
+            if (isWomanName) {
+                console.log(`Ваш пол ${this.gender}.\nПривет, ${showUserName}! Ты такая красивая сегодня!`);
+                return onReturnCommand();
+            } else {
+                console.log(`Ваш пол ${this.gender}.\nПривет, ${showUserName}! Ты такой красивый сегодня!`);
+                return onReturnCommand();
+            }
         }
-        return onReturnCommand();
     }
 }
 
