@@ -23,10 +23,8 @@ class App {
       if(!handler) {
         console.log('Такой команды нет, попробуйте еще раз')
         return this.listenToCommand();
-      } else {
-        handler.callback();
-        this.listenToCommand();
       }
+      handler.callback(this.listenToCommand);
     });
   };
 
