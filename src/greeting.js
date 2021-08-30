@@ -1,6 +1,5 @@
 const readline = require('./readline');
 
-
 class User {
     constructor (gender) {
         this.gender = gender;

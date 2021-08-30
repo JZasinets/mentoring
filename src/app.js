@@ -1,4 +1,5 @@
 const commandWelcome = require('./greeting.js');
+const showWeather = require('./weather.js');
 const logOut = require('./logOut.js');
 const readline = require('./readline');
 
@@ -30,6 +31,7 @@ class App {
 
   start = () => {
     this.registerCommand("приветствие", commandWelcome);
+    this.registerCommand("погода", showWeather);
     this.registerCommand("выход", logOut);
     console.log(this.showCommands(this.commands));
 
