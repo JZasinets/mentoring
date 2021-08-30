@@ -32,7 +32,7 @@ class User {
         }
 
         if (isNameSmall || isNameContainsNumbers || isNameContainsSymbols) {
-            handlerError(isNameSmall, 'Имя должно содержать более 3-х букв');
+            handlerError(isNameSmall, 'Имя должно содержать менее 3-х букв');
             handlerError(isNameContainsNumbers, 'Имя не может содержать цифры');
             handlerError(isNameContainsSymbols, 'Имя не может содержать символы');
         } else {
