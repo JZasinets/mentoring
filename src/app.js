@@ -2,6 +2,8 @@ const commandWelcome = require('./greeting.js');
 const showWeather = require('./weather.js');
 const logOut = require('./logOut.js');
 const readline = require('./readline');
+const commandArray = require('./array.js');
+const commandFibonacci = require('./fibonacci.js');
 
 class App {
   constructor() {
@@ -31,7 +33,9 @@ class App {
 
   start = () => {
     this.registerCommand("приветствие", commandWelcome);
+    this.registerCommand("массив", commandArray);
     this.registerCommand("погода", showWeather);
+    this.registerCommand("фибоначчи", commandFibonacci)
     this.registerCommand("выход", logOut);
     console.log(this.showCommands(this.commands));
 
