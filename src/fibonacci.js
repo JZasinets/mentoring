@@ -2,14 +2,14 @@ const readline = require('./readline');
 
 class FibonacciNumbers {
     backCommands = (onReturnCommand, stopFibonacci) => {
-            let a = 0;
-            let b = 1;
+            let previousNumberFibonacci = 0;
+            let currentNumberFibonacci = 1;
 
             let timeFibonacci = setInterval(() => {
-                let c = a + b;
-                a = b;
-                b = c;
-                console.log(b);
+                let nextNumberFibonacci = previousNumberFibonacci + currentNumberFibonacci;
+                previousNumberFibonacci = currentNumberFibonacci;
+                currentNumberFibonacci = nextNumberFibonacci;
+                console.log(currentNumberFibonacci);
                 readline.question('', (stopFibonacci) => {
                     if(stopFibonacci === 'стоп') {
                         clearInterval(timeFibonacci);
