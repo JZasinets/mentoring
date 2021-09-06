@@ -6,8 +6,8 @@ class ChangeArray {
         const isContainsNumbers = arrayValue.every((result, val) => {return result && typeof val === 'number'});
 
         if (isContainsNumbers) {
-            const uniqueValue = Array.from(new Set(arrayValue));
-            console.log(`Уникальные значения: ${uniqueValue}`);
+            const [uniqueValue] = [new Set(arrayValue)];
+            console.log(`Уникальные значения: ${[...uniqueValue]}`);
             return onReturnCommand();
         } else {
             console.log('Нужно ввести только числа')
