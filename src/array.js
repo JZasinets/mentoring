@@ -7,7 +7,7 @@ class ChangeArray {
 
         if (isContainsNumbers) {
             const uniqueValue = [...new Set(arrayValue)];
-            console.log(`Уникальные значения: ${[uniqueValue]}`);
+            console.log(`Уникальные значения: ${uniqueValue}`);
             return onReturnCommand();
         } else {
             console.log('Нужно ввести только числа')
