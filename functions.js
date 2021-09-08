@@ -7,7 +7,7 @@ let unlimitedArguments = (...arguments) => {
     }
 };
 
-let namedArguments = ({ parameterA, parameterB, parameterC = {} }) => {
+let namedArguments = ({ parameterA, parameterB, parameterC }) => {
     console.log('\nВторое задание');
     const parametersArray = [parameterA, parameterB, parameterC];
 
