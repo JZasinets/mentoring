@@ -1,38 +1,37 @@
 let unlimitedArguments = (...arguments) => {
     console.log('Первое задание');
-    const argumentsArray = [...arguments];
 
-    for (let i = 0; i < argumentsArray.length; i++) {
-        console.log(`Тип переменной: ${typeof(argumentsArray[i])}, значение переменной: ${argumentsArray[i]};`);
+    for (let i = 0; i < arguments.length; i++) {
+        console.log(`Тип переменной: ${typeof(arguments[i])}, значение переменной: ${arguments[i]};`);
     }
 };
 
-let namedArguments = ({ parameterA, parameterB, parameterC }) => {
+let namedArguments = ({ first, second, third }) => {
     console.log('\nВторое задание');
-    const parametersArray = [parameterA, parameterB, parameterC];
+    const parametersArray = [first, second, third];
 
     for (let i = 0; i < parametersArray.length; i++) {
         console.log(`Тип именнованного параметра: ${typeof(parametersArray[i])}, значение именованного параметра: ${parametersArray[i]};`);
     }
 }
 
-let noNamedArguments = (firstArgument, secondArgument, ...otherArguments) => {
+let noNamedArguments = (first, second, ...other) => {
     console.log('\nТретье задание');
     let showArguments = (numberArguments) => {
         console.log('Значение: ' + numberArguments)
     }
 
-    showArguments(firstArgument);
-    showArguments(secondArgument);
-    unlimitedArguments(...otherArguments);
+    showArguments(first);
+    showArguments(second);
+    unlimitedArguments(...other);
 }
 
-let addNameArguments = (firstPar, secondPar, thirdPar) => {
+let addNameArguments = (one, two, three) => {
     console.log('\nЧетвёртое задание');
-    namedArguments({ parameterA: firstPar, parameterB: secondPar, parameterC: thirdPar });
+    namedArguments({ first: one, second: two, third: three });
 }
 
 unlimitedArguments(1, true, 'параметр', null, undefined);
-namedArguments({ parameterA: 'параметр a', parameterB: true, parameterC: 1 });
+namedArguments({ first: 'параметр a', second: true, third: 1 });
 noNamedArguments('первый параметр', 'второй параметр', 'третий параметр', 123, true);
 addNameArguments('первый параметр задания 4', 2, 'ТРЕТИЙ параметр задания 4');

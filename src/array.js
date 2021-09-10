@@ -2,8 +2,8 @@ const readline = require('./readline');
 
 class ChangeArray {
     getUniqueValue = (stringValue, onReturnCommand) => {
-        const arrayValue = stringValue.split(' ').join('').split(',');
-        const isContainsNumbers = arrayValue.every((result, val) => {return result && typeof val === 'number'});
+        const arrayValue = stringValue.replace(/\s+/g,"").split(',');
+        const isContainsNumbers = arrayValue.every((result, val) => result && typeof val === 'number');
 
         if (isContainsNumbers) {
             const uniqueValue = [...new Set(arrayValue)];
